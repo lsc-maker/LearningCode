@@ -2,8 +2,8 @@ from tvtk.api import tvtk
 
 def read_data():
 	plot3d = tvtk.MultiBlockPLOT3DReader(
-		xyz_file_name="combxyz.bin",  #网格文件
-		q_file_name="combq.bin",    #空气动力学结果文件
+		xyz_file_name="./data/combxyz.bin",  #网格文件
+		q_file_name="./data/combq.bin",    #空气动力学结果文件
 		scalar_function_number=100, #设置表梁数据数量
 		vector_function_number=200 #设置矢量数据数量
 		)
