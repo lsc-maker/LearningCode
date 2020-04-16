@@ -2,7 +2,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
-matplotlib.rcParams['font.family']='SimHei'
+#matplotlib.rcParams['font.family']='SimHei'
 radar_labels = np.array(['研究型(I)','艺术型(A)','社会型(S)',\
                          '企业型(E)','常规型(C)','现实型(R)']) #雷达标签
 nAttr = 6
@@ -20,7 +20,7 @@ fig = plt.figure(facecolor="white")
 plt.subplot(111, polar=True)
 plt.plot(angles,data,'o-', linewidth=1, alpha=0.2)
 plt.fill(angles,data, alpha=0.25)
-plt.thetagrids(angles*180/np.pi, radar_labels,frac = 1.2)
+plt.thetagrids(angles*180/np.pi, radar_labels)
 plt.figtext(0.52, 0.95, '霍兰德人格分析', ha='center', size=20)
 legend = plt.legend(data_labels, loc=(0.94, 0.80), labelspacing=0.1)
 plt.setp(legend.get_texts(), fontsize='large')
