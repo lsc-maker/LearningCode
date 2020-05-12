@@ -40,9 +40,9 @@ def create_dataset(dataset_path, do_train, repeat_num=1, batch_size=32):
     rank_id = int(os.getenv("DEVICE_ID"))
 
     if device_num == 1:
-        ds = de.Cifar10Dataset(dataset_path, num_parallel_workers=4, shuffle=True)
+        ds = de.Cifar10Dataset(dataset_path, num_parallel_workers=8, shuffle=True)
     else:
-        ds = de.Cifar10Dataset(dataset_path, num_parallel_workers=4, shuffle=True,
+        ds = de.Cifar10Dataset(dataset_path, num_parallel_workers=8, shuffle=True,
                                num_shards=device_num, shard_id=rank_id)
 
     resize_height = config.image_height
