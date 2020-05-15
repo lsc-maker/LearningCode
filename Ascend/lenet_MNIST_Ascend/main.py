@@ -117,12 +117,6 @@ if __name__ == "__main__":
                 dataset_sink_mode=args.dataset_sink_mode)
     mox.file.copy_parallel(local_train_url,args.train_url)
     print("============== Starting Testing ==============")
-    if args_opt.checkpoint_path:
-        checkpoint_file=os.path.join(local_ckpt_url,os.path.split(args_opt.checkpoint_path)[1])
-    mox.file.copy_parallel(args_opt.data_url,local_data_url)
-    mox.file.copy_parallel(args_opt.checkpoint_path,checkpoint_file)
-    param_dict = load_checkpoint(checkpoint_file)
-    load_param_into_net(network, param_dict)
     ds_eval = create_dataset(os.path.join(local_data_url,'test'), 32, 1)
     acc = model.eval(ds_eval, dataset_sink_mode=args.dataset_sink_mode)
     print("============== Accuracy:{} ==============".format(acc))
