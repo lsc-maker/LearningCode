@@ -19,9 +19,9 @@ from easydict import EasyDict as edict
 
 cifar_cfg = edict({
     'num_classes': 10,
-    'lr_init': 0.05,
+    'lr_init': 0.001,
     'batch_size': 64,
-    'epoch_size': 70,
+    'epoch_size': 90,
     'momentum': 0.9,
     'weight_decay': 5e-4,
     'buffer_size': 10,

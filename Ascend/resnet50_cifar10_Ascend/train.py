@@ -41,13 +41,10 @@ np.random.seed(1)
 de.config.set_seed(1)
 
 parser = argparse.ArgumentParser(description='Image classification')
-#parser.add_argument('--run_distribute', type=bool, default=False, help='Run distribute')
-#parser.add_argument('--device_num', type=int, default=1, help='Device num.')
 parser.add_argument('--do_train', type=bool, default=True, help='Do train or not.')
 parser.add_argument('--do_eval', type=bool, default=False, help='Do eval or not.')
 parser.add_argument('--data_url', type=str, default=None, help='Dataset path')
 parser.add_argument('--train_url', type=str, default=None, help='Train output path')
-#parser.add_argument('--dataset_path', type=str,default=None,help='Dataset path')
 args_opt = parser.parse_args()
 
 device_id = int(os.getenv('DEVICE_ID'))

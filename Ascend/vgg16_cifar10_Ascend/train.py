@@ -60,7 +60,6 @@ def lr_steps(global_step, lr_max=None, total_epochs=None, steps_per_epoch=None):
 parser = argparse.ArgumentParser(description='Cifar10 classification')
 parser.add_argument('--device_target', type=str, default='Ascend', choices=['Ascend', 'GPU'],
                     help='device where the code will be implemented. (Default: Ascend)')
-#parser.add_argument('--data_path', type=str, default='./cifar', help='path where the dataset is saved')
 parser.add_argument('--device_id', type=int, default=None, help='device id of GPU or Ascend. (Default: None)')
 parser.add_argument('--data_url', type=str, default=None, help='Dataset path')
 parser.add_argument('--train_url', type=str, default=None, help='Train output path')
@@ -80,10 +79,13 @@ local_train_url = '/cache/ckpt'
 
 device_num = int(os.environ.get("DEVICE_NUM", 1))
 if device_num > 1:
-    context.reset_auto_parallel_context()
-    context.set_auto_parallel_context(device_num=device_num, parallel_mode=ParallelMode.DATA_PARALLEL,
-                                      mirror_mean=True)
-    init()
+  context.set_context(enable_hccl=True)
+  context.set_auto_parallel_context(device_num=device_num, parallel_mode=ParallelMode.DATA_PARALLEL,
+                                    mirror_mean=True)
+  init()
+  local_data_url = os.path.join(local_data_url,str(device_id))
+else:
+  context.set_context(enable_hccl=False)
 
 mox.file.copy_parallel(args_opt.data_url,local_data_url)
 dataset = create_dataset(local_data_url, cfg.epoch_size)

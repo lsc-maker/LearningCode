@@ -25,16 +25,18 @@ from config import cifar_cfg as cfg
 def create_dataset(data_home, repeat_num=1, training=True):
     """Data operations."""
     ds.config.set_seed(1)
-    #data_dir = os.path.join(data_home, "cifar-10-batches-bin")
-    #if not training:
-    #    data_dir = os.path.join(data_home, "cifar-10-verify-bin")
 
     rank_size = int(os.environ.get("RANK_SIZE")) if os.environ.get("RANK_SIZE") else None
-    #rank_id = int(os.environ.get("RANK_ID")) if os.environ.get("RANK_ID") else None
     
     device_num = int(os.getenv("RANK_SIZE"))
     rank_id = int(os.getenv("DEVICE_ID"))
-    data_set = ds.Cifar10Dataset(data_home)
+
+    if device_num == 1:
+        data_set = ds.Cifar10Dataset(data_home, num_parallel_workers=8, shuffle=True)
+    else:
+        data_set = ds.Cifar10Dataset(data_home, num_parallel_workers=8, shuffle=True,
+                               num_shards=device_num, shard_id=rank_id)
+
     resize_height = cfg.image_height
     resize_width = cfg.image_width
     rescale = 1.0 / 255.0

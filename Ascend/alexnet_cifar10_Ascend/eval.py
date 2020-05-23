@@ -34,9 +34,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='MindSpore AlexNet Example')
     parser.add_argument('--device_target', type=str, default="Ascend", choices=['Ascend', 'GPU'],
                         help='device where the code will be implemented (default: Ascend)')
-    #parser.add_argument('--data_path', type=str, default="./", help='path where the dataset is saved')
-    #parser.add_argument('--ckpt_path', type=str, default="./ckpt", help='if is test, must provide\
-     #                   path where the trained ckpt file')
     parser.add_argument('--dataset_sink_mode', type=bool, default=False, help='dataset_sink_mode is False or True')
     parser.add_argument('--checkpoint_path', type=str, default=None, help='Checkpoint file path')
     parser.add_argument('--data_url', type=str, default=None, help='Dataset path')

@@ -31,7 +31,6 @@ import moxing as mox
 parser = argparse.ArgumentParser(description='Cifar10 classification')
 parser.add_argument('--device_target', type=str, default='Ascend', choices=['Ascend', 'GPU'],
                     help='device where the code will be implemented. (Default: Ascend)')
-#parser.add_argument('--data_path', type=str, default='./cifar', help='path where the dataset is saved')
 parser.add_argument('--checkpoint_path', type=str, default=None, help='checkpoint file path.')
 parser.add_argument('--device_id', type=int, default=None, help='device id of GPU or Ascend. (Default: None)')
 parser.add_argument('--data_url', type=str, default=None, help='Dataset path')

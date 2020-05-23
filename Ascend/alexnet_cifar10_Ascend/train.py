@@ -36,8 +36,6 @@ if __name__ == "__main__":
     parser.add_argument('--device_target', type=str, default="Ascend", choices=['Ascend', 'GPU'],
                         help='device where the code will be implemented (default: Ascend)')
     parser.add_argument('--data_url', type=str, default="./", help='path where the dataset is saved')
-    #parser.add_argument('--ckpt_path', type=str, default="./ckpt", help='if is test, must provide\
-    #                    path where the trained ckpt file')
     parser.add_argument('--train_url', type=str, default=None, help='Train output path')
     parser.add_argument('--dataset_sink_mode', type=bool, default=False, help='dataset_sink_mode is False or True')
     args = parser.parse_args()
