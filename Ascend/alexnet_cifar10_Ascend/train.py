@@ -24,10 +24,12 @@ from config import alexnet_cfg as cfg
 from dataset import create_dataset
 import mindspore.nn as nn
 from mindspore import context
-from mindspore.train import Model
+from mindspore.communication.management import init
+from mindspore.train.model import Model, ParallelMode
 from mindspore.nn.metrics import Accuracy
 from mindspore.model_zoo.alexnet import AlexNet
 from mindspore.train.callback import ModelCheckpoint, CheckpointConfig, LossMonitor
+from mindspore.train.loss_scale_manager import FixedLossScaleManager
 import moxing as mox
 
 
@@ -40,13 +42,24 @@ if __name__ == "__main__":
     parser.add_argument('--dataset_sink_mode', type=bool, default=False, help='dataset_sink_mode is False or True')
     args = parser.parse_args()
 
-    context.set_context(mode=context.GRAPH_MODE, device_target=args.device_target, enable_mem_reuse=False)
+    device_id = int(os.getenv('DEVICE_ID'))
+    device_num = int(os.getenv('RANK_SIZE'))
 
     local_data_url = '/cache/data'
     local_train_url = '/cache/ckpt'
 
+    if device_num > 1:
+        context.set_context(mode=context.GRAPH_MODE, device_target=args.device_target, enable_mem_reuse=False)
+        context.set_auto_parallel_context(device_num=device_num, parallel_mode=ParallelMode.DATA_PARALLEL,
+                                    mirror_mean=True)
+        init()
+        local_data_url = os.path.join(local_data_url,str(device_id))
+    else:
+        context.set_context(enable_hccl=False)
+
     network = AlexNet(cfg.num_classes)
     loss = nn.SoftmaxCrossEntropyWithLogits(is_grad=False, sparse=True, reduction="mean")
+    loss_scale = FixedLossScaleManager(cfg.loss_scale, drop_overflow_update=False)
     opt = nn.Momentum(network.trainable_params(), cfg.learning_rate, cfg.momentum)
     model = Model(network, loss, opt, metrics={"Accuracy": Accuracy()})  # test
 

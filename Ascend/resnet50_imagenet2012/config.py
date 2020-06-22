@@ -13,20 +13,30 @@
 # limitations under the License.
 # ============================================================================
 """
-network config setting, will be used in main.py
+network config setting, will be used in train.py and eval.py
 """
-from easydict import EasyDict as edict
+from easydict import EasyDict as ed
 
-cifar_cfg = edict({
-    'num_classes': 10,
-    'lr_init': 0.001,
-    'loss_scale': 1024,
-    'batch_size': 64,
-    'epoch_size': 70,
-    'momentum': 0.9,
-    'weight_decay': 5e-4,
-    'buffer_size': 10,
-    'image_height': 224,
-    'image_width': 224,
-    'keep_checkpoint_max': 10
+config = ed({
+    "class_num": 1001,
+    "batch_size": 32,
+    "loss_scale": 1024,
+    "momentum": 0.9,
+    "weight_decay": 1e-4,
+    "epoch_size": 90,
+    "pretrained_epoch_size": 1,
+    "buffer_size": 1000,
+    "image_height": 224,
+    "image_width": 224,
+    "save_checkpoint": True,
+    "save_checkpoint_epochs": 1,
+    "keep_checkpoint_max": 10,
+    "save_checkpoint_path": "./",
+    "warmup_epochs": 0,
+    "lr_decay_mode": "cosine",
+    "use_label_smooth": True,
+    "label_smooth_factor": 0.1,
+    "lr_init": 0,
+    "lr_max": 0.1
+
 })

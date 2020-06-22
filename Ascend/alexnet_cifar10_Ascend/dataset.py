@@ -16,6 +16,7 @@
 Produce the dataset
 """
 
+import os
 from config import alexnet_cfg as cfg
 import mindspore.dataset as ds
 import mindspore.dataset.transforms.c_transforms as C
@@ -27,7 +28,15 @@ def create_dataset(data_path, batch_size=32, repeat_size=1, status="train"):
     """
     create dataset for train or test
     """
-    cifar_ds = ds.Cifar10Dataset(data_path)
+
+    rank_id = int(os.getenv('DEVICE_ID'))
+    device_num = int(os.getenv('RANK_SIZE'))
+    
+    if device_num == 1:
+        cifar_ds = ds.Cifar10Dataset(data_path, num_parallel_workers=8, shuffle=True)
+    else:
+        cifar_ds = ds.Cifar10Dataset(data_path, num_parallel_workers=8, shuffle=True,
+                               num_shards=device_num, shard_id=rank_id)
     rescale = 1.0 / 255.0
     shift = 0.0
 

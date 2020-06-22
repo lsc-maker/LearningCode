@@ -91,10 +91,6 @@ if __name__ == '__main__':
         opt = Momentum(filter(lambda x: x.requires_grad, net.get_parameters()), lr, config.momentum,
                        config.weight_decay, config.loss_scale)
 
-        '''0.2测试段
-        model = Model(net, loss_fn=loss, optimizer=opt, loss_scale_manager=loss_scale, metrics={'acc'}, amp_level="O2",
-                      keep_batchnorm_fp32=False)
-        '''
         model = Model(net, loss_fn=loss, optimizer=opt, loss_scale_manager=loss_scale, metrics={'acc'})
 
         time_cb = TimeMonitor(data_size=step_size)

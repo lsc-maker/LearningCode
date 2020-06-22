@@ -27,6 +27,7 @@ from mindspore.nn.optim.momentum import Momentum
 from mindspore.train.model import Model, ParallelMode
 from mindspore import context
 from mindspore.train.callback import ModelCheckpoint, CheckpointConfig, LossMonitor, TimeMonitor
+from mindspore.train.loss_scale_manager import FixedLossScaleManager
 from mindspore.model_zoo.vgg import vgg16
 from dataset import create_dataset
 from config import cifar_cfg as cfg
@@ -92,6 +93,7 @@ dataset = create_dataset(local_data_url, cfg.epoch_size)
 batch_num = dataset.get_dataset_size()
 
 net = vgg16(num_classes=cfg.num_classes)
+loss_scale = FixedLossScaleManager(cfg.loss_scale, drop_overflow_update=False)
 lr = lr_steps(0, lr_max=cfg.lr_init, total_epochs=cfg.epoch_size, steps_per_epoch=batch_num)
 opt = Momentum(filter(lambda x: x.requires_grad, net.get_parameters()), Tensor(lr), cfg.momentum, weight_decay=cfg.weight_decay)
 loss = nn.SoftmaxCrossEntropyWithLogits(sparse=True, reduction='mean', is_grad=False)

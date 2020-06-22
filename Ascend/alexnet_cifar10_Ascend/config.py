@@ -21,6 +21,7 @@ from easydict import EasyDict as edict
 alexnet_cfg = edict({
     'num_classes': 10,
     'learning_rate': 0.001,
+    'loss_scale': 1024,
     'momentum': 0.9,
     'epoch_size': 60,
     'batch_size': 32,
