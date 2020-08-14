@@ -1,0 +1,201 @@
+do nothing
+[Modelarts Service Log]user: uid=1101(work) gid=1101(work) groups=1101(work),1000(HwHiAiUser)
+[Modelarts Service Log]pwd: /home/work
+[Modelarts Service Log]app_url: s3://jeffdingtons/resnet/
+[Modelarts Service Log]boot_file: resnet/eval.py
+[Modelarts Service Log]log_url: /tmp/log/resnet.log
+[Modelarts Service Log]command: resnet/eval.py --net=resnet50 --dataset=imagenet2012 --checkpoint_path=s3://jeffdingtons/resnet_output/V0002/resnet-90_5004.ckpt --data_url=s3://jeffdingtons/imagenet_original/val/ --train_url=s3://jeffdingtons/resnet_output/V0005/
+[Modelarts Service Log]local_code_dir: 
+[Modelarts Service Log][modelarts_create_log] modelarts-pipe found
+[Modelarts Service Log]handle inputs of training job
+INFO:root:Using MoXing-v1.16.1-
+INFO:root:Using OBS-Python-SDK-3.1.2
+[ModelArts Service Log][INFO][2020/08/14 05:17:41]: env MA_INPUTS is not found, skip the inputs handler
+INFO:root:Using MoXing-v1.16.1-
+INFO:root:Using OBS-Python-SDK-3.1.2
+[ModelArts Service Log]2020-08-14 05:17:42,148 - modelarts-downloader.py[line:612] - INFO: Main: modelarts-downloader starting with Namespace(dst='./', recursive=True, skip_creating_dir=False, src='s3://jeffdingtons/resnet/', trace=False, type='common', verbose=False)
+[Modelarts Service Log][modelarts_logger] modelarts-pipe found
+/home/work/user-job-dir
+[Modelarts Service Log][modelarts_logger] modelarts-pipe found
+[Modelarts Service Log]2020-08-14 05:17:42,614 - INFO - Davinci training command
+[Modelarts Service Log]2020-08-14 05:17:42,614 - INFO - ['/usr/bin/python', '/home/work/user-job-dir/resnet/eval.py', '--net=resnet50', '--dataset=imagenet2012', '--checkpoint_path=s3://jeffdingtons/resnet_output/V0002/resnet-90_5004.ckpt', '--data_url=s3://jeffdingtons/imagenet_original/val/', '--train_url=s3://jeffdingtons/resnet_output/V0005/']
+[Modelarts Service Log]2020-08-14 05:17:42,614 - INFO - Wait for Rank table file ready
+[Modelarts Service Log]2020-08-14 05:17:42,615 - INFO - Rank table file (K8S generated) is ready for read
+[Modelarts Service Log]2020-08-14 05:17:42,615 - INFO - 
+{
+    "status": "completed",
+    "group_count": "1",
+    "group_list": [
+        {
+            "group_name": "job-resnet",
+            "device_count": "1",
+            "instance_count": "1",
+            "instance_list": [
+                {
+                    "pod_name": "job373de7b7-job-resnet-0",
+                    "server_id": "192.168.0.146",
+                    "devices": [
+                        {
+                            "device_id": "0",
+                            "device_ip": "192.1.220.127"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+[Modelarts Service Log]2020-08-14 05:17:42,615 - INFO - Rank table file (C7x)
+[Modelarts Service Log]2020-08-14 05:17:42,615 - INFO - 
+{
+    "status": "completed",
+    "version": "1.0",
+    "server_count": "1",
+    "server_list": [
+        {
+            "server_id": "192.168.0.146",
+            "device": [
+                {
+                    "device_id": "0",
+                    "device_ip": "192.1.220.127",
+                    "rank_id": "0"
+                }
+            ]
+        }
+    ]
+}
+[Modelarts Service Log]2020-08-14 05:17:42,616 - INFO - Rank table file (C7x) is generated
+[Modelarts Service Log]2020-08-14 05:17:42,616 - INFO - Slogd startup
+[Modelarts Service Log]2020-08-14 05:17:42,618 - INFO - Current server
+[Modelarts Service Log]2020-08-14 05:17:42,619 - INFO - 
+{
+    "server_id": "192.168.0.146",
+    "device": [
+        {
+            "device_id": "0",
+            "device_ip": "192.1.220.127",
+            "rank_id": "0"
+        }
+    ]
+}
+[Modelarts Service Log]2020-08-14 05:17:42,620 - INFO - FMK of device0 startup
+INFO:root:Using MoXing-v1.16.1-
+INFO:root:Using OBS-Python-SDK-3.1.2
+INFO:root:Listing OBS: 1000
+INFO:root:Listing OBS: 2000
+INFO:root:Listing OBS: 3000
+INFO:root:Listing OBS: 4000
+INFO:root:Listing OBS: 5000
+INFO:root:Listing OBS: 6000
+INFO:root:Listing OBS: 7000
+INFO:root:Listing OBS: 8000
+INFO:root:Listing OBS: 9000
+INFO:root:Listing OBS: 10000
+INFO:root:Listing OBS: 11000
+INFO:root:Listing OBS: 12000
+INFO:root:Listing OBS: 13000
+INFO:root:Listing OBS: 14000
+INFO:root:Listing OBS: 15000
+INFO:root:Listing OBS: 16000
+INFO:root:Listing OBS: 17000
+INFO:root:Listing OBS: 18000
+INFO:root:Listing OBS: 19000
+INFO:root:Listing OBS: 20000
+INFO:root:Listing OBS: 21000
+INFO:root:Listing OBS: 22000
+INFO:root:Listing OBS: 23000
+INFO:root:Listing OBS: 24000
+INFO:root:Listing OBS: 25000
+INFO:root:Listing OBS: 26000
+INFO:root:Listing OBS: 27000
+INFO:root:Listing OBS: 28000
+INFO:root:Listing OBS: 29000
+INFO:root:Listing OBS: 30000
+INFO:root:Listing OBS: 31000
+INFO:root:Listing OBS: 32000
+INFO:root:Listing OBS: 33000
+INFO:root:Listing OBS: 34000
+INFO:root:Listing OBS: 35000
+INFO:root:Listing OBS: 36000
+INFO:root:Listing OBS: 37000
+INFO:root:Listing OBS: 38000
+INFO:root:Listing OBS: 39000
+INFO:root:Listing OBS: 40000
+INFO:root:Listing OBS: 41000
+INFO:root:Listing OBS: 42000
+INFO:root:Listing OBS: 43000
+INFO:root:Listing OBS: 44000
+INFO:root:Listing OBS: 45000
+INFO:root:Listing OBS: 46000
+INFO:root:Listing OBS: 47000
+INFO:root:Listing OBS: 48000
+INFO:root:Listing OBS: 49000
+INFO:root:Listing OBS: 50000
+INFO:root:Listing OBS: 51000
+INFO:root:pid: None.	1000/50000
+INFO:root:pid: None.	2000/50000
+INFO:root:pid: None.	3000/50000
+INFO:root:pid: None.	4000/50000
+INFO:root:pid: None.	5000/50000
+INFO:root:pid: None.	6000/50000
+INFO:root:pid: None.	7000/50000
+INFO:root:pid: None.	8000/50000
+INFO:root:pid: None.	9000/50000
+INFO:root:pid: None.	10000/50000
+INFO:root:pid: None.	11000/50000
+INFO:root:pid: None.	12000/50000
+INFO:root:pid: None.	13000/50000
+INFO:root:pid: None.	14000/50000
+INFO:root:pid: None.	15000/50000
+INFO:root:pid: None.	16000/50000
+INFO:root:pid: None.	17000/50000
+INFO:root:pid: None.	18000/50000
+INFO:root:pid: None.	19000/50000
+INFO:root:pid: None.	20000/50000
+INFO:root:pid: None.	21000/50000
+INFO:root:pid: None.	22000/50000
+INFO:root:pid: None.	23000/50000
+INFO:root:pid: None.	24000/50000
+INFO:root:pid: None.	25000/50000
+INFO:root:pid: None.	26000/50000
+INFO:root:pid: None.	27000/50000
+INFO:root:pid: None.	28000/50000
+INFO:root:pid: None.	29000/50000
+INFO:root:pid: None.	30000/50000
+INFO:root:pid: None.	31000/50000
+INFO:root:pid: None.	32000/50000
+INFO:root:pid: None.	33000/50000
+INFO:root:pid: None.	34000/50000
+INFO:root:pid: None.	35000/50000
+INFO:root:pid: None.	36000/50000
+INFO:root:pid: None.	37000/50000
+INFO:root:pid: None.	38000/50000
+INFO:root:pid: None.	39000/50000
+INFO:root:pid: None.	40000/50000
+INFO:root:pid: None.	41000/50000
+INFO:root:pid: None.	42000/50000
+INFO:root:pid: None.	43000/50000
+INFO:root:pid: None.	44000/50000
+INFO:root:pid: None.	45000/50000
+INFO:root:pid: None.	46000/50000
+INFO:root:pid: None.	47000/50000
+INFO:root:pid: None.	48000/50000
+INFO:root:pid: None.	49000/50000
+INFO:root:pid: None.	50000/50000
+[WARNING] SESSION(143,python):2020-08-14-05:19:55.484.997 [mindspore/ccsrc/session/ascend_session.cc:569] SelectKernel] There has 54 node/nodes used reduce precision to selected the kernel!
+[WARNING] PIPELINE(143,python):2020-08-14-05:20:29.027.129 [mindspore/ccsrc/utils/utils.h:290] ChangeFileMode] Change file `./ms_output_0eval.pb` to mode 700 fail.
+result: {'top_1_accuracy': 0.7654649487836107, 'top_5_accuracy': 0.9341589308578745} ckpt= s3://jeffdingtons/resnet_output/V0002/resnet-90_5004.ckpt
+
+[Modelarts Service Log]2020-08-14 05:21:20,843 - INFO - Begin destroy FMK processes
+[Modelarts Service Log]2020-08-14 05:21:20,843 - INFO - FMK of device0 (pid: [143]) has exited
+[Modelarts Service Log]2020-08-14 05:21:20,844 - INFO - End destroy FMK processes
+=== begin proc exit    ===
+=== begin stop slogd   ===
+===   end pro exit     ===
+[Modelarts Service Log]Training end with return code: 0
+[Modelarts Service Log]handle outputs of training job
+[Modelarts Service Log][modelarts_logger] modelarts-pipe found
+INFO:root:Using MoXing-v1.16.1-
+INFO:root:Using OBS-Python-SDK-3.1.2
+[ModelArts Service Log][INFO][2020/08/14 05:21:21]: env MA_OUTPUTS is not found, skip the outputs handler
+[Modelarts Service Log]Training completed.
