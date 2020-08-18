@@ -37,7 +37,7 @@ def create_dataset1(dataset_path, do_train, repeat_num=1, batch_size=32, target=
         dataset
     """
     if target == "Ascend":
-        device_num = int(os.getenv("DEVICE_NUM"))
+        device_num = int(os.getenv("RANK_SIZE"))
         rank_id = int(os.getenv("RANK_ID"))
     else:
         init("nccl")
