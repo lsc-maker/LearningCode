@@ -119,11 +119,13 @@ def main():
     mindrecord_file = os.path.join(local_mindrecord_url, prefix + "0")
     if not os.path.exists(mindrecord_file):
         mox.file.copy_parallel(args_opt.data_url,local_data_url)
-        mox.file.copy_parallel(args_opt.anno_path,local_anno_url)
-        if os.path.isdir(local_data_url) or os.path.exists(local_anno_url):
+        if args_opt.anno_path:
+            anno_file=os.path.join(local_anno_url,os.path.split(args_opt.anno_path)[1])
+        mox.file.copy_parallel(args_opt.anno_path,anno_file)
+        if os.path.isdir(local_data_url) or os.path.exists(anno_file):
             print("Create Mindrecord.")
             data_to_mindrecord_byte_image(local_data_url,
-                                          local_anno_url,
+                                          anno_file,
                                           local_mindrecord_url,
                                           prefix=prefix,
                                           file_num=8)

@@ -112,7 +112,6 @@ if __name__ == '__main__':
                    frequency=config.frequency)
 
 
-    #args_opt.data_url = 's3://mindspore-pub-dataset/imagenet_original/train/'
     mox.file.copy_parallel(args_opt.data_url,local_data_url)
 
     if not config.label_smooth:

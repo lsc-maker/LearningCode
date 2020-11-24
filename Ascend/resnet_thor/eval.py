@@ -56,7 +56,6 @@ if __name__ == '__main__':
     if args_opt.checkpoint_path:
         checkpoint_file=os.path.join(local_ckpt_url,os.path.split(args_opt.checkpoint_path)[1])
 
-    #args_opt.data_url = 's3://mindspore-pub-dataset/imagenet_original/train/'
     mox.file.copy_parallel(args_opt.data_url,local_data_url)
     mox.file.copy_parallel(args_opt.checkpoint_path,checkpoint_file)
 
